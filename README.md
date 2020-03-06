@@ -20,7 +20,7 @@ ___
 
 ### Domain Model
 
-![Domain Model](images/domainModeling.JPG)
+![Domain Model](images/domianModeling.png)
 
 ___
 
