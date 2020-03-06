@@ -1,4 +1,4 @@
-# medicine-box
+# Medicine-Box
 ## Alexa Skill Project
 
 Create an Alexa application capable of interacting with a user's medication. Once medicines are added to a user's Alexa device, our application will create reminders for scheduled doses, have the ability to query if the user is up-to-date with their medications, and get various details about their medicines.
