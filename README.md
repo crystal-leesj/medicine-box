@@ -1,7 +1,10 @@
 # medicine-box
 
-Team Name: BZing
-Team Members: Annie Pineda, Crystal Lee, Micah Thorstenson, Phong Doan
+## Bzing Team members:
+[Micha Thorstenson](https://github.com/micahThor)
+[Crystal Lee](https://github.com/crystal-leesj)
+[Phong Doan](https://github.com/phongvdoan)
+[Annie Pineda](https://github.com/anniepineda)
 
 ## Alexa Skill Project
 
