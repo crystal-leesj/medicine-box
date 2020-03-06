@@ -7,6 +7,12 @@ Our application removes the burden and worry of taking regimented and scheduled 
 
 ___
 
+### Wireframe
+
+![Wireframe](images/wireframe.png)
+
+___
+
 ### Domain Model
 
 ![Domain Model](images/domianModeling.png)
