@@ -35,6 +35,7 @@ ___
 #### Privacy Policy:
 
 Medicine Box an Alexa skill project allows you to save prescribed medication information on your Alexa device. 
+
 We use your information only for use of your personal Alexa skill Medicine Box; to set medication name, dosage amount, and length of prescription. By using this Medicine Box , you agree to the collection and user of information in accordance with this policy. 
 
 
