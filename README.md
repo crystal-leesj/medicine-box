@@ -1,4 +1,5 @@
-# medicine-box
+# Medicine Box
+## An Alexa Skill Project
 
 ## Bzing Team members:
 [Micha Thorstenson](https://github.com/micahThor)
