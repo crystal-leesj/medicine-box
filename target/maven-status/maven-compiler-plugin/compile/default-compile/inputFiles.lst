@@ -1,6 +1,6 @@
-/Users/micathor/Desktop/MedicineBox/src/main/java/com/rxing/medicinebox/handlers/AddMedicationIntentHandler.java
-/Users/micathor/Desktop/MedicineBox/src/main/java/com/rxing/medicinebox/handlers/LaunchRequestHandler.java
-/Users/micathor/Desktop/MedicineBox/src/main/java/com/rxing/medicinebox/models/Medicine.java
-/Users/micathor/Desktop/MedicineBox/src/main/java/com/rxing/medicinebox/MedicineBoxStreamHandler.java
-/Users/micathor/Desktop/MedicineBox/src/main/java/com/rxing/medicinebox/handlers/GetSingleMedicationIntentHandler.java
-/Users/micathor/Desktop/MedicineBox/src/main/java/com/rxing/medicinebox/handlers/GetAllMedicationsIntentHandler.java
+/Users/micathor/Desktop/medicine-box/src/main/java/com/rxing/medicinebox/handlers/GetAllMedicationsIntentHandler.java
+/Users/micathor/Desktop/medicine-box/src/main/java/com/rxing/medicinebox/models/Medicine.java
+/Users/micathor/Desktop/medicine-box/src/main/java/com/rxing/medicinebox/handlers/AddMedicationIntentHandler.java
+/Users/micathor/Desktop/medicine-box/src/main/java/com/rxing/medicinebox/handlers/LaunchRequestHandler.java
+/Users/micathor/Desktop/medicine-box/src/main/java/com/rxing/medicinebox/MedicineBoxStreamHandler.java
+/Users/micathor/Desktop/medicine-box/src/main/java/com/rxing/medicinebox/handlers/GetSingleMedicationIntentHandler.java
