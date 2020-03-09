@@ -1,0 +1,6 @@
+com/rxing/medicinebox/models/Medicine.class
+com/rxing/medicinebox/handlers/LaunchRequestHandler.class
+com/rxing/medicinebox/handlers/GetSingleMedicationIntentHandler.class
+com/rxing/medicinebox/handlers/AddMedicationIntentHandler.class
+com/rxing/medicinebox/MedicineBoxStreamHandler.class
+com/rxing/medicinebox/handlers/GetAllMedicationsIntentHandler.class
