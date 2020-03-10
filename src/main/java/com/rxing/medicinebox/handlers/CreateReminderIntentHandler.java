@@ -2,25 +2,9 @@ package com.rxing.medicinebox.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.IntentRequest;
-import com.amazon.ask.model.Permissions;
 import com.amazon.ask.model.Response;
-import com.amazon.ask.model.Slot;
-import com.amazon.ask.model.interfaces.connections.ConnectionsResponse;
-import com.amazon.ask.model.services.reminderManagement.*;
 import com.amazon.ask.request.Predicates;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.rxing.medicinebox.models.Medicine;
-import com.rxing.medicinebox.utils.ReminderUtil;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class CreateReminderIntentHandler implements RequestHandler {
