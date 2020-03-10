@@ -1,0 +1,586 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "my metring",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AddMedication",
+          "slots": [
+            {
+              "name": "name",
+              "type": "name",
+              "samples": [
+                "{name}"
+              ]
+            },
+            {
+              "name": "doseAmount",
+              "type": "doseAmount",
+              "samples": [
+                "{doseAmount}"
+              ]
+            },
+            {
+              "name": "doseScale",
+              "type": "doseScale",
+              "samples": [
+                "{doseScale}"
+              ]
+            },
+            {
+              "name": "start_Date",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{start_Date}"
+              ]
+            },
+            {
+              "name": "end_Date",
+              "type": "AMAZON.DATE",
+              "samples": [
+                "{end_Date}"
+              ]
+            },
+            {
+              "name": "frequencyPeriod",
+              "type": "frequencyPeriod",
+              "samples": [
+                "{frequencyPeriod}"
+              ]
+            },
+            {
+              "name": "frequencyByPeriod",
+              "type": "frequencyByPeriod",
+              "samples": [
+                "{frequencyByPeriod}"
+              ]
+            }
+          ],
+          "samples": [
+            "add a medication",
+            "add one medication",
+            "add medication"
+          ]
+        },
+        {
+          "name": "GetSingleMedication",
+          "slots": [
+            {
+              "name": "name",
+              "type": "name",
+              "samples": [
+                "{name}"
+              ]
+            }
+          ],
+          "samples": [
+            "I want to know about my medication",
+            "Get one med",
+            "Get single med",
+            "Get a med",
+            "Get one medication",
+            "Get single medication",
+            "Get a medication"
+          ]
+        },
+        {
+          "name": "ListAllCommands",
+          "slots": [],
+          "samples": [
+            "What can I do",
+            "help me",
+            "description",
+            "all commands",
+            "help",
+            "details",
+            "list all commands"
+          ]
+        },
+        {
+          "name": "GetAllMedications",
+          "slots": [],
+          "samples": [
+            "Get every med",
+            "Let every med",
+            "List all med",
+            "Get all med",
+            "List every medications",
+            "Get every medications",
+            "List all medications",
+            "Get all medications"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "name",
+          "values": [
+            {
+              "name": {
+                "value": "name name"
+              }
+            },
+            {
+              "name": {
+                "value": "name"
+              }
+            }
+          ]
+        },
+        {
+          "name": "doseAmount",
+          "values": [
+            {
+              "name": {
+                "value": "amount"
+              }
+            }
+          ]
+        },
+        {
+          "name": "doseScale",
+          "values": [
+            {
+              "name": {
+                "value": "scale"
+              }
+            }
+          ]
+        },
+        {
+          "name": "frequencyPeriod",
+          "values": [
+            {
+              "name": {
+                "value": "period"
+              }
+            }
+          ]
+        },
+        {
+          "name": "frequencyByPeriod",
+          "values": [
+            {
+              "name": {
+                "value": "byPeriod"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "AddMedication",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1228087011604"
+          },
+          "slots": [
+            {
+              "name": "name",
+              "type": "name",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1546967801481.1431331502164",
+                "elicitation": "Elicit.Slot.1349428080878.1219006331662"
+              }
+            },
+            {
+              "name": "doseAmount",
+              "type": "doseAmount",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1546967801481.1001724730547",
+                "elicitation": "Elicit.Slot.868567624754.1266243941799"
+              }
+            },
+            {
+              "name": "doseScale",
+              "type": "doseScale",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1546967801481.1361760247360",
+                "elicitation": "Elicit.Slot.868567624754.1246476529181"
+              }
+            },
+            {
+              "name": "start_Date",
+              "type": "AMAZON.DATE",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1546967801481.1066726788221",
+                "elicitation": "Elicit.Slot.868567624754.1532841113821"
+              }
+            },
+            {
+              "name": "end_Date",
+              "type": "AMAZON.DATE",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1546967801481.1045476356570",
+                "elicitation": "Elicit.Slot.868567624754.403599719055"
+              }
+            },
+            {
+              "name": "frequencyPeriod",
+              "type": "frequencyPeriod",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1441715988769.1205705764912",
+                "elicitation": "Elicit.Slot.868567624754.138364358267"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1107393728246.1276672384480.1011129232531",
+                  "values": [
+                    "^[0-9]+$"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "frequencyByPeriod",
+              "type": "frequencyByPeriod",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.475284336666.1483808494497",
+                "elicitation": "Elicit.Slot.475284336666.1483808494497"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GetSingleMedication",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.369815439503"
+          },
+          "slots": [
+            {
+              "name": "name",
+              "type": "name",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.1297328877963.968721217275",
+                "elicitation": "Elicit.Slot.1297328877963.968721217275"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ListAllCommands",
+          "delegationStrategy": "SKILL_RESPONSE",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.84188226424"
+          },
+          "slots": []
+        },
+        {
+          "name": "GetAllMedications",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.705786207693"
+          },
+          "slots": []
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1349428080878.1219006331662",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the medication name?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1349428080878.1219006331662",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "You want to add the medication {name}"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.868567624754.1266243941799",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "The dose is {doseAmount}"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.868567624754.1266243941799",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the dose amount?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.868567624754.1246476529181",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the scale of the dose?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.868567624754.1246476529181",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "The dose is on the {doseScale} scale."
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.868567624754.1532841113821",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "You are starting on {start_Date}"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.868567624754.1532841113821",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "When are you starting?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.868567624754.403599719055",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "When does your prescription end?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.868567624754.138364358267",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How many do you have to take at once?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.649447957211.1491103378843",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": " {frequencyPeriod} {frequencyByPeriod}"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1441715988769.1205705764912",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you take {frequencyPeriod} pill at one time?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Do you take {frequencyPeriod} pills at one time?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1297328877963.968721217275",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What is the name of the medication?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1297328877963.968721217275",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Did you say {name} ?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Is {name} that you want?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1546967801481.1431331502164",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Is {name} right?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Is {name} correct?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1546967801481.1001724730547",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Is {doseAmount} right?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Is {doseAmount} correct?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1546967801481.1361760247360",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Is {doseScale} right?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Is {doseScale} correct?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1546967801481.1066726788221",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Is {start_Date} right?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Is {start_Date} correct?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1546967801481.1045476356570",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Is {end_Date} right?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Is {end_Date} correct?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.84188226424",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want all the commands?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.369815439503",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want to know about a single medication?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.475284336666.1483808494497",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How many times per day do you take the medication?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.475284336666.1483808494497",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you take {name} , {frequencyByPeriod} times per day?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1107393728246.1276672384480.1011129232531",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please use numbers"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1228087011604",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want to add a medication?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.705786207693",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want to get all your medication?"
+          }
+        ]
+      }
+    ]
+  }
+}
