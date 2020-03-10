@@ -8,8 +8,8 @@ public class Medicine {
     private String doseScale;
     private String startDate;
     private String endDate;
-    private String frequencyPeriod;
-    private String frequencyByPeriod;
+    private String frequencyPeriod; //#
+    private String frequencyByPeriod; // day
 
     public Medicine(String drugName, String doseAmount, String doseScale, String startDate, String endDate, String frequencyPeriod, String frequencyByPeriod) {
         this.drugName = drugName;
