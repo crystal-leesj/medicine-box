@@ -42,62 +42,17 @@ public class CreateReminderIntentHandler implements RequestHandler {
 
     //output on the reminder "take {doseAmount} of {name} by {time}
     @Override
-    public Optional<Response> handle(HandlerInput handlerInput, ConnectionsResponse connectionsResponse) {
+    public Optional<Response> handle(HandlerInput handlerInput) {
 
         //TODO: Grab data from Medicine model, add Reminder data
-        // persistent storage from dynamo db
-//        Map<String, Object> persistentStorage = handlerInput.getAttributesManager().getPersistentAttributes();
-//
-//        // get slot values
-//        IntentRequest intentRequest = (IntentRequest) handlerInput.getRequestEnvelope().getRequest();
-//        Map<String, Slot> slots = intentRequest.getIntent().getSlots();
-//        String drugName = slots.get("name").getValue();
-//        String doseAmount = slots.get("doseAmount").getValue();
-//        String doseScale = slots.get("doseScale").getValue();
-//        String startDate = slots.get("start_Date").getValue();
-//        String endDate = slots.get("end_Date").getValue();
-//        String frequencyPeriod = slots.get("frequencyPeriod").getValue();
-//        String frequencyByPeriod = slots.get("frequencyByPeriod").getValue();
-//
-//        // create medicine and jsonify object
-//        Medicine newMed = new Medicine(drugName, doseAmount, doseScale, startDate, endDate, frequencyPeriod, frequencyByPeriod);
-//        Gson gsonBuilder = new GsonBuilder().create();
-//        String newMedJson = gsonBuilder.toJson(newMed);
-//
-//        // put attribute and save
-//        persistentStorage.put(drugName, newMedJson);
-//        handlerInput.getAttributesManager().setPersistentAttributes(persistentStorage);
-//        handlerInput.getAttributesManager().savePersistentAttributes();
-//        //TODO: label is "take {doseAmount} of {name}"
-//        // take your 2 pills of tylenol by {current time that the reminder goes}
-
-        //TODO: permissions does not have to be done
-
-//        Permissions permissions = handlerInput.getRequestEnvelope().getContext().getSystem().getUser().getPermissions();
-//        if(null!=permissions){
-//            String speechText = "In order for this skill to create a reminder, please grant permission using the card I sent to your Alexa app";
-//            List<String> list = new ArrayList<>();
-//            list.add("alexa::alerts:reminders:skill:readwrite");
-//            return handlerInput.getResponseBuilder()
-//                    .withSpeech(speechText)
-//                    .withAskForPermissionsConsentCard(list)
-//                    .build();
-//        }
-//        String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
-//        createReminder(handlerInput, "Time To Medicate!");
-
-        return handlerInput.getResponseBuilder()
-                .withSpeech(speechText)
-                .withShouldEndSession(false)
-                .build();
 
 
 
         // create speech for return statement
-//        String speechText = "Reminders??";
-//        return handlerInput.getResponseBuilder()
-//                .withSpeech(speechText)
-//                .withShouldEndSession(false)
-//                .build();
+        String speechText = "Reminders??";
+        return handlerInput.getResponseBuilder()
+                .withSpeech(speechText)
+                .withShouldEndSession(false)
+                .build();
     }
 }

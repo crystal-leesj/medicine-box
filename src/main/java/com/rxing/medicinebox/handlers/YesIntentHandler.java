@@ -29,11 +29,11 @@ public class YesIntentHandler implements RequestHandler {
         if (previousIntent != null && previousIntent.equals("WhenIsMyShowIntent")) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
-            Medicine medicine = (Medicine)mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("name"), Medicine.class);
+            Medicine medicine = mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("name"), Medicine.class);
 
             String token;
             try {
-                ReminderUtil.createReminder(input,);
+                ReminderUtil.createReminder(input);
                 token = String.format("Reminder for %s set", medicine.getDrugName());
                 return input.getResponseBuilder().withSimpleCard("Channel Guide", token).withSpeech(token).withShouldEndSession(true).build();
             } catch (ServiceException var9) {
