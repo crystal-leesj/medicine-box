@@ -3,6 +3,7 @@ package com.rxing.medicinebox.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.IntentRequest;
+import com.amazon.ask.model.Permissions;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.model.services.reminderManagement.*;
@@ -13,10 +14,12 @@ import com.rxing.medicinebox.models.Medicine;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class CreateReminderHandler implements RequestHandler {
+public class CreateReminderIntentHandler implements RequestHandler {
     private ReminderResponse createReminder(HandlerInput input, String locale, String reminderLabel) {
 
         SpokenText spokenText = SpokenText.builder()
@@ -34,15 +37,15 @@ public class CreateReminderHandler implements RequestHandler {
 
         LocalDateTime triggerTime = LocalDateTime.now().plusSeconds(5);
 
-        Recurrence recurrence = Recurrence.builder()
-                .addByDayItem(RecurrenceDay.FR)
-                .withFreq(RecurrenceFreq.WEEKLY)
-                .build();
+//        Recurrence recurrence = Recurrence.builder()
+////                .addByDayItem(RecurrenceDay.FR)
+////                .withFreq(RecurrenceFreq.WEEKLY)
+////                .build();
 
         Trigger trigger = Trigger.builder()
                 .withType(TriggerType.SCHEDULED_ABSOLUTE)
                 .withScheduledTime(triggerTime)
-                .withRecurrence(recurrence)
+
                 .withTimeZoneId("America/Los_Angeles")
                 .build();
 
@@ -102,21 +105,33 @@ public class CreateReminderHandler implements RequestHandler {
 //        persistentStorage.put(drugName, newMedJson);
 //        handlerInput.getAttributesManager().setPersistentAttributes(persistentStorage);
 //        handlerInput.getAttributesManager().savePersistentAttributes();
-        //TODO: label is "take {doseAmount} of {name}"
-        // take your 2 pills of tylenol by {current time that the reminder goes}
+//        //TODO: label is "take {doseAmount} of {name}"
+//        // take your 2 pills of tylenol by {current time that the reminder goes}
+
+        //TODO: permissions does not have to be done
+        
+//        Permissions permissions = handlerInput.getRequestEnvelope().getContext().getSystem().getUser().getPermissions();
+//        if(null!=permissions){
+//            String speechText = "In order for this skill to create a reminder, please grant permission using the card I sent to your Alexa app";
+//            List<String> list = new ArrayList<>();
+//            list.add("alexa::alerts:reminders:skill:readwrite");
+//            return handlerInput.getResponseBuilder()
+//                    .withSpeech(speechText)
+//                    .withAskForPermissionsConsentCard(list)
+//                    .build();
+//        }
         String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
-        ReminderResponse reminderResponse = createReminder(handlerInput, locale, "Time To Medicate!");
+        createReminder(handlerInput, locale, "Time To Medicate!");
         String speechText = "Ok, I will remind you to medicate every 5 secs";
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)
-                .withSimpleCard("Reminder Sample", speechText)
+                .withShouldEndSession(false)
                 .build();
 
 
 
         // create speech for return statement
-//        String speechText = String.format("You added %s with a dosage of %s %s.  You are starting this medication on %s and ending on %s.  You are scheduled to take this %s a %s",
-//                drugName, doseAmount, doseScale, startDate, endDate, frequencyPeriod, frequencyByPeriod);
+//        String speechText = "Reminders??";
 //        return handlerInput.getResponseBuilder()
 //                .withSpeech(speechText)
 //                .withShouldEndSession(false)
