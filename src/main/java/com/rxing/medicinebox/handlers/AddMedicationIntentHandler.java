@@ -28,12 +28,12 @@ public class AddMedicationIntentHandler implements RequestHandler {
         // get slot values
         IntentRequest intentRequest = (IntentRequest) handlerInput.getRequestEnvelope().getRequest();
         Map<String, Slot> slots = intentRequest.getIntent().getSlots();
-        String drugName = slots.get("name").getValue();
-        String doseAmount = slots.get("doseAmount").getValue();
-        String doseScale = slots.get("doseScale").getValue();
-        String startDate = slots.get("start_Date").getValue();
-        String endDate = slots.get("end_Date").getValue();
-        String frequencyPeriod = slots.get("frequencyPeriod").getValue();
+        String drugName =          slots.get("name").getValue();
+        String doseAmount =        slots.get("doseAmount").getValue();
+        String doseScale =         slots.get("doseScale").getValue();
+        String startDate =         slots.get("start_Date").getValue();
+        String endDate =           slots.get("end_Date").getValue();
+        String frequencyPeriod =   slots.get("frequencyPeriod").getValue();
         String frequencyByPeriod = slots.get("frequencyByPeriod").getValue();
 
         // create medicine and jsonify object
@@ -47,7 +47,8 @@ public class AddMedicationIntentHandler implements RequestHandler {
         handlerInput.getAttributesManager().savePersistentAttributes();
 
         // create speech for return statement
-        String speechText = String.format("You added %s with a dosage of %s %s.  You are starting this medication on %s and ending on %s.  You are scheduled to take this %s a %s",
+        String speechText = String.format(
+                "You added %s with a dosage of %s %s.  You are starting this medication on %s and ending on %s.  You are scheduled to take this %s a %s",
                 drugName, doseAmount, doseScale, startDate, endDate, frequencyPeriod, frequencyByPeriod);
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)

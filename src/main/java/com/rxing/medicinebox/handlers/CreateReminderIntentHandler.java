@@ -20,11 +20,11 @@ import java.util.Map;
 import java.util.Optional;
 
 public class CreateReminderIntentHandler implements RequestHandler {
-    private ReminderResponse createReminder(HandlerInput input, String locale, String reminderLabel) {
+    private ReminderResponse createReminder(HandlerInput input, String reminderLabel) {
 
         SpokenText spokenText = SpokenText.builder()
                 .withText(reminderLabel)
-                .withLocale(locale)
+                .withLocale("en-US")
                 .build();
 
         AlertInfoSpokenInfo alertInfoSpokenInfo = AlertInfoSpokenInfo.builder()
@@ -35,17 +35,18 @@ public class CreateReminderIntentHandler implements RequestHandler {
                 .withSpokenInfo(alertInfoSpokenInfo)
                 .build();
 
-        LocalDateTime triggerTime = LocalDateTime.now().plusSeconds(5);
+//        LocalDateTime triggerTime = LocalDateTime.now().plusSeconds(5);
+        LocalDateTime triggerTime = LocalDateTime.of(2020, 02, 10, 14, 35, 00);
 
 //        Recurrence recurrence = Recurrence.builder()
-////                .addByDayItem(RecurrenceDay.FR)
-////                .withFreq(RecurrenceFreq.WEEKLY)
-////                .build();
+//                .addByDayItem(RecurrenceDay.FR)
+//                .withFreq(RecurrenceFreq.WEEKLY)
+//                .build();
 
         Trigger trigger = Trigger.builder()
                 .withType(TriggerType.SCHEDULED_ABSOLUTE)
                 .withScheduledTime(triggerTime)
-
+//                .withRecurrence(recurrence)
                 .withTimeZoneId("America/Los_Angeles")
                 .build();
 
@@ -109,7 +110,7 @@ public class CreateReminderIntentHandler implements RequestHandler {
 //        // take your 2 pills of tylenol by {current time that the reminder goes}
 
         //TODO: permissions does not have to be done
-        
+
 //        Permissions permissions = handlerInput.getRequestEnvelope().getContext().getSystem().getUser().getPermissions();
 //        if(null!=permissions){
 //            String speechText = "In order for this skill to create a reminder, please grant permission using the card I sent to your Alexa app";
@@ -120,8 +121,8 @@ public class CreateReminderIntentHandler implements RequestHandler {
 //                    .withAskForPermissionsConsentCard(list)
 //                    .build();
 //        }
-        String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
-        createReminder(handlerInput, locale, "Time To Medicate!");
+//        String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
+//        createReminder(handlerInput, "Time To Medicate!");
         String speechText = "Ok, I will remind you to medicate every 5 secs";
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)
