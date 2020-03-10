@@ -28,7 +28,7 @@ public class GetAllMedicationsIntentHandler implements RequestHandler {
             Set<String> meds = persistentStorage.keySet();
             Iterator<String> it = meds.iterator();
             while (it.hasNext()) {
-                speechText += it.next() + " ";
+                speechText += it.next() + ", ";
             }
         }
 
