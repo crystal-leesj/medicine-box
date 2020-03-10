@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "medication box by team rxing",
+      "invocationName": "my metring",
       "intents": [
         {
           "name": "AMAZON.FallbackIntent",
@@ -65,18 +65,15 @@
               "name": "frequencyPeriod",
               "type": "frequencyPeriod",
               "samples": [
-                "take {frequencyPeriod} tablet by mouth {frequencyByPeriod}",
-                "{frequencyPeriod} every {frequencyByPeriod}",
-                "{frequencyPeriod} pill per {frequencyByPeriod}",
-                "every {frequencyPeriod} {frequencyByPeriod}",
-                "{frequencyPeriod} a {frequencyByPeriod}",
-                "{frequencyPeriod} {frequencyByPeriod}",
-                "{frequencyPeriod} "
+                "{frequencyPeriod}"
               ]
             },
             {
               "name": "frequencyByPeriod",
-              "type": "frequencyByPeriod"
+              "type": "frequencyByPeriod",
+              "samples": [
+                "{frequencyByPeriod}"
+              ]
             }
           ],
           "samples": [
@@ -112,11 +109,6 @@
           "samples": [
             "What can I do",
             "help me",
-            "describe all my medications",
-            "Tell me about my medications",
-            "Tell me about all my medications",
-            "I want to know my drugs",
-            "I want to know my medications",
             "description",
             "all commands",
             "help",
@@ -201,8 +193,10 @@
       "intents": [
         {
           "name": "AddMedication",
-          "confirmationRequired": false,
-          "prompts": {},
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1228087011604"
+          },
           "slots": [
             {
               "name": "name",
@@ -262,14 +256,26 @@
               "prompts": {
                 "confirmation": "Confirm.Slot.1441715988769.1205705764912",
                 "elicitation": "Elicit.Slot.868567624754.138364358267"
-              }
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1107393728246.1276672384480.1011129232531",
+                  "values": [
+                    "^[0-9]+$"
+                  ]
+                }
+              ]
             },
             {
               "name": "frequencyByPeriod",
               "type": "frequencyByPeriod",
-              "confirmationRequired": false,
-              "elicitationRequired": false,
-              "prompts": {}
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.475284336666.1483808494497",
+                "elicitation": "Elicit.Slot.475284336666.1483808494497"
+              }
             }
           ]
         },
@@ -294,9 +300,18 @@
         },
         {
           "name": "ListAllCommands",
+          "delegationStrategy": "SKILL_RESPONSE",
           "confirmationRequired": true,
           "prompts": {
             "confirmation": "Confirm.Intent.84188226424"
+          },
+          "slots": []
+        },
+        {
+          "name": "GetAllMedications",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.705786207693"
           },
           "slots": []
         }
@@ -390,7 +405,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "What is the frequency that you are taking the medication?"
+            "value": "How many do you have to take at once?"
           }
         ]
       },
@@ -408,11 +423,11 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Is {name} {doseAmount} {doseScale} {frequencyPeriod} correct?"
+            "value": "Do you take {frequencyPeriod} pill at one time?"
           },
           {
             "type": "PlainText",
-            "value": "Is {name} {doseAmount} {doseScale} {frequencyPeriod} sounds right?"
+            "value": "Do you take {frequencyPeriod} pills at one time?"
           }
         ]
       },
@@ -508,11 +523,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Do you want to list all the medications?"
-          },
-          {
-            "type": "PlainText",
-            "value": "Do you want all the medications?"
+            "value": "Do you want all the commands?"
           }
         ]
       },
@@ -522,6 +533,51 @@
           {
             "type": "PlainText",
             "value": "Do you want to know about a single medication?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.475284336666.1483808494497",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How many times per day do you take the medication?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.475284336666.1483808494497",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you take {name} , {frequencyByPeriod} times per day?"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1107393728246.1276672384480.1011129232531",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please use numbers"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1228087011604",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want to add a medication?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.705786207693",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want to get all your medication?"
           }
         ]
       }
