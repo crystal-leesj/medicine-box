@@ -85,22 +85,7 @@ public class CreateReminderIntentHandler implements RequestHandler {
 //        }
 //        String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
 //        createReminder(handlerInput, "Time To Medicate!");
-        String code = connectionsResponse.getStatus().getCode();
-        if (code.equalsIgnoreCase("200")) {
-            String permissionRequestResult = (String) connectionsResponse.getPayload().getOrDefault("status", "");
 
-            switch (permissionRequestResult) {
-                case "ACCEPTED":
-                    // The customer has granted the permissions, either in response to the last request or previously.
-                    // Action: Continue with creating the reminder.
-                    final ObjectMapper mapper = new ObjectMapper();
-                    mapper.registerModule(new JavaTimeModule());
-
-                    // Read stored attributes from token.
-                    String token = connectionsResponse.getToken();
-
-                    ReminderResponse response = ReminderUtil.createReminder(handlerInput);
-                String speechText = "Ok, I will remind you to medicate every 5 secs";
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)
                 .withShouldEndSession(false)
