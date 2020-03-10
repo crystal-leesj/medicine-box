@@ -6,11 +6,15 @@ import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Permissions;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
+import com.amazon.ask.model.interfaces.connections.ConnectionsResponse;
 import com.amazon.ask.model.services.reminderManagement.*;
 import com.amazon.ask.request.Predicates;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rxing.medicinebox.models.Medicine;
+import com.rxing.medicinebox.utils.ReminderUtil;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -20,49 +24,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class CreateReminderIntentHandler implements RequestHandler {
-    private ReminderResponse createReminder(HandlerInput input, String reminderLabel) {
 
-        SpokenText spokenText = SpokenText.builder()
-                .withText(reminderLabel)
-                .withLocale("en-US")
-                .build();
-
-        AlertInfoSpokenInfo alertInfoSpokenInfo = AlertInfoSpokenInfo.builder()
-                .addContentItem(spokenText)
-                .build();
-
-        AlertInfo alertInfo = AlertInfo.builder()
-                .withSpokenInfo(alertInfoSpokenInfo)
-                .build();
-
-//        LocalDateTime triggerTime = LocalDateTime.now().plusSeconds(5);
-        LocalDateTime triggerTime = LocalDateTime.of(2020, 02, 10, 14, 35, 00);
-
-//        Recurrence recurrence = Recurrence.builder()
-//                .addByDayItem(RecurrenceDay.FR)
-//                .withFreq(RecurrenceFreq.WEEKLY)
-//                .build();
-
-        Trigger trigger = Trigger.builder()
-                .withType(TriggerType.SCHEDULED_ABSOLUTE)
-                .withScheduledTime(triggerTime)
-//                .withRecurrence(recurrence)
-                .withTimeZoneId("America/Los_Angeles")
-                .build();
-
-        PushNotification pushNotification = PushNotification.builder()
-                .withStatus(PushNotificationStatus.ENABLED)
-                .build();
-
-        ReminderRequest reminderRequest = ReminderRequest.builder()
-                .withAlertInfo(alertInfo)
-                .withRequestTime(OffsetDateTime.now())
-                .withTrigger(trigger)
-                .withPushNotification(pushNotification)
-                .build();
-
-        return input.getServiceClientFactory().getReminderManagementService().createReminder(reminderRequest);
-    }
     @Override
     public boolean canHandle(HandlerInput handlerInput) {
         return handlerInput.matches(Predicates.intentName("CreateReminder"));
@@ -80,7 +42,7 @@ public class CreateReminderIntentHandler implements RequestHandler {
 
     //output on the reminder "take {doseAmount} of {name} by {time}
     @Override
-    public Optional<Response> handle(HandlerInput handlerInput) {
+    public Optional<Response> handle(HandlerInput handlerInput, ConnectionsResponse connectionsResponse) {
 
         //TODO: Grab data from Medicine model, add Reminder data
         // persistent storage from dynamo db
@@ -123,7 +85,22 @@ public class CreateReminderIntentHandler implements RequestHandler {
 //        }
 //        String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
 //        createReminder(handlerInput, "Time To Medicate!");
-        String speechText = "Ok, I will remind you to medicate every 5 secs";
+        String code = connectionsResponse.getStatus().getCode();
+        if (code.equalsIgnoreCase("200")) {
+            String permissionRequestResult = (String) connectionsResponse.getPayload().getOrDefault("status", "");
+
+            switch (permissionRequestResult) {
+                case "ACCEPTED":
+                    // The customer has granted the permissions, either in response to the last request or previously.
+                    // Action: Continue with creating the reminder.
+                    final ObjectMapper mapper = new ObjectMapper();
+                    mapper.registerModule(new JavaTimeModule());
+
+                    // Read stored attributes from token.
+                    String token = connectionsResponse.getToken();
+
+                    ReminderResponse response = ReminderUtil.createReminder(handlerInput);
+                String speechText = "Ok, I will remind you to medicate every 5 secs";
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)
                 .withShouldEndSession(false)
