@@ -29,7 +29,7 @@ public class GetSingleMedicationIntentHandler implements RequestHandler {
         Map<String, Slot> slots = intentRequest.getIntent().getSlots();
         String drugName = slots.get("name").getValue();
 
-        String speechText = "";
+        String speechText;
         if (persistentStorage.containsKey(drugName)) {
             String jsonGarbage = (String) persistentStorage.get(drugName);
             Gson gsonBuilder = new GsonBuilder().create();

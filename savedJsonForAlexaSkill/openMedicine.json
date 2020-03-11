@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "my metring",
+      "invocationName": "my paeon",
       "intents": [
         {
           "name": "AMAZON.FallbackIntent",
@@ -35,7 +35,7 @@
             },
             {
               "name": "doseAmount",
-              "type": "doseAmount",
+              "type": "AMAZON.NUMBER",
               "samples": [
                 "{doseAmount}"
               ]
@@ -63,14 +63,14 @@
             },
             {
               "name": "frequencyPeriod",
-              "type": "frequencyPeriod",
+              "type": "AMAZON.NUMBER",
               "samples": [
                 "{frequencyPeriod}"
               ]
             },
             {
               "name": "frequencyByPeriod",
-              "type": "frequencyByPeriod",
+              "type": "AMAZON.NUMBER",
               "samples": [
                 "{frequencyByPeriod}"
               ]
@@ -128,6 +128,24 @@
             "Get every medications",
             "List all medications",
             "Get all medications"
+          ]
+        },
+        {
+          "name": "CreateReminder",
+          "slots": [
+            {
+              "name": "name",
+              "type": "name",
+              "samples": [
+                "{name}"
+              ]
+            }
+          ],
+          "samples": [
+            "add a reminder",
+            "i want to add a reminder",
+            "create reminder",
+            "i want to create a reminder for my medicine"
           ]
         }
       ],
@@ -210,7 +228,7 @@
             },
             {
               "name": "doseAmount",
-              "type": "doseAmount",
+              "type": "AMAZON.NUMBER",
               "confirmationRequired": true,
               "elicitationRequired": true,
               "prompts": {
@@ -250,26 +268,17 @@
             },
             {
               "name": "frequencyPeriod",
-              "type": "frequencyPeriod",
+              "type": "AMAZON.NUMBER",
               "confirmationRequired": true,
               "elicitationRequired": true,
               "prompts": {
                 "confirmation": "Confirm.Slot.1441715988769.1205705764912",
                 "elicitation": "Elicit.Slot.868567624754.138364358267"
-              },
-              "validations": [
-                {
-                  "type": "isInSet",
-                  "prompt": "Slot.Validation.1107393728246.1276672384480.1011129232531",
-                  "values": [
-                    "^[0-9]+$"
-                  ]
-                }
-              ]
+              }
             },
             {
               "name": "frequencyByPeriod",
-              "type": "frequencyByPeriod",
+              "type": "AMAZON.NUMBER",
               "confirmationRequired": true,
               "elicitationRequired": true,
               "prompts": {
@@ -314,6 +323,25 @@
             "confirmation": "Confirm.Intent.705786207693"
           },
           "slots": []
+        },
+        {
+          "name": "CreateReminder",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.133444584158"
+          },
+          "slots": [
+            {
+              "name": "name",
+              "type": "name",
+              "confirmationRequired": true,
+              "elicitationRequired": true,
+              "prompts": {
+                "confirmation": "Confirm.Slot.133444584158.1316351299120",
+                "elicitation": "Elicit.Slot.133444584158.1316351299120"
+              }
+            }
+          ]
         }
       ],
       "delegationStrategy": "ALWAYS"
@@ -578,6 +606,33 @@
           {
             "type": "PlainText",
             "value": "Do you want to get all your medication?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.133444584158.1316351299120",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What medicine would you like to be reminded of"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.133444584158.1316351299120",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Is {name} right?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.133444584158",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Do you want to create a reminder for one of your medications?"
           }
         ]
       }

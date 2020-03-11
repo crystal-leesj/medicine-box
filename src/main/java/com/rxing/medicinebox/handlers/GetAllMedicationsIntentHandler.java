@@ -5,7 +5,6 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.request.Predicates;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -21,19 +20,18 @@ public class GetAllMedicationsIntentHandler implements RequestHandler {
         // persistent storage from dynamo db
         Map<String, Object> persistentStorage = handlerInput.getAttributesManager().getPersistentAttributes();
 
-        String speechText = "Here's a list of your medications. ";
+        StringBuilder speechText = new StringBuilder("Here's a list of your medications. ");
         if (persistentStorage.isEmpty()) {
-            speechText = "You don't have any meds";
+            speechText = new StringBuilder("You don't have any meds");
         } else {
             Set<String> meds = persistentStorage.keySet();
-            Iterator<String> it = meds.iterator();
-            while (it.hasNext()) {
-                speechText += it.next() + " ";
+            for (String med : meds) {
+                speechText.append(med).append(", ");
             }
         }
 
         return handlerInput.getResponseBuilder()
-                .withSpeech(speechText)
+                .withSpeech(speechText.toString())
                 .withShouldEndSession(false)
                 .build();
     }

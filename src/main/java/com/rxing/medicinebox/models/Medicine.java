@@ -1,7 +1,5 @@
 package com.rxing.medicinebox.models;
 
-import java.util.Date;
-
 public class Medicine {
     private String drugName;
     private String doseAmount;
