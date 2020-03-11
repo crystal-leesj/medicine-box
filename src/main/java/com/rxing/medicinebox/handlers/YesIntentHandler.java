@@ -26,7 +26,7 @@ public class YesIntentHandler implements RequestHandler {
 
     public Optional<Response> handle(HandlerInput input) {
         String previousIntent = (String)input.getAttributesManager().getSessionAttributes().get("previousIntent");
-        if (previousIntent != null && previousIntent.equals("WhenIsMyShowIntent")) {
+        if (previousIntent != null && previousIntent.equals("CreateReminder")) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
             Medicine medicine = mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("name"), Medicine.class);
@@ -34,7 +34,7 @@ public class YesIntentHandler implements RequestHandler {
             String token;
             try {
                 ReminderUtil.createReminder(input);
-                token = String.format("Reminder for %s set", medicine.getDrugName());
+                token = String.format("Reminder for %s medication", medicine.getDrugName());
                 return input.getResponseBuilder().withSimpleCard("Channel Guide", token).withSpeech(token).withShouldEndSession(true).build();
             } catch (ServiceException var9) {
                 log.error("Error creating reminder", var9);
@@ -54,7 +54,7 @@ public class YesIntentHandler implements RequestHandler {
                 }
             }
         } else {
-            return input.getResponseBuilder().withSpeech("Hmm. I'm not sure how to help you with that. This skill can set reminders for when shows will be on TV. What show did you want to know about?").withShouldEndSession(false).build();
+            return input.getResponseBuilder().withSpeech("Hmm. I'm not sure how to help you with that.").withShouldEndSession(false).build();
         }
     }
 

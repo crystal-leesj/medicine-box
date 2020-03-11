@@ -3,10 +3,10 @@ package com.rxing.medicinebox.utils;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.services.reminderManagement.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
+@SuppressWarnings("UnusedReturnValue")
 public class ReminderUtil {
 
     public static ReminderResponse createReminder(HandlerInput input) {
@@ -30,15 +30,15 @@ public class ReminderUtil {
         // recurrence pattern.
         LocalDateTime triggerTime = LocalDateTime.now();
 
-//        Recurrence recurrence = Recurrence.builder()
-//                .withByDay(RecurrenceDay.FR)
-//                .withFreq(RecurrenceFreq.WEEKLY)
-//                .build();
+        Recurrence recurrence = Recurrence.builder()
+                .addByDayItem(RecurrenceDay.FR)
+                .withFreq(RecurrenceFreq.WEEKLY)
+                .build();
 
         Trigger trigger = Trigger.builder()
                 .withType(TriggerType.SCHEDULED_ABSOLUTE)
                 .withScheduledTime(triggerTime)
-//                .withRecurrence(recurrence)
+                .withRecurrence(recurrence)
                 .withTimeZoneId("America/Los_Angeles")
                 .build();
 
