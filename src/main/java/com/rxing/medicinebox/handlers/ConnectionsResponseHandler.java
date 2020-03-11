@@ -65,7 +65,7 @@ public class ConnectionsResponseHandler implements com.amazon.ask.dispatcher.req
                     try {
                         ReminderUtil.createReminder(input);
                         String speechText = String.format("Reminder for %s set", medicine.getDrugName());
-                        return input.getResponseBuilder().withSimpleCard("Channel Guide", speechText).withSpeech(speechText).withShouldEndSession(true).build();
+                        return input.getResponseBuilder().withSimpleCard("My real pill box", speechText).withSpeech(speechText).withShouldEndSession(true).build();
                     } catch (ServiceException var13) {
                         log.error("Error creating reminder", var13);
                         if (var13.getStatusCode() == 403) {
