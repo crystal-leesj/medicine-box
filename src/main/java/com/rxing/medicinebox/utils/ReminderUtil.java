@@ -4,7 +4,9 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.services.reminderManagement.*;
 
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
 
 @SuppressWarnings("UnusedReturnValue")
 public class ReminderUtil {
@@ -29,16 +31,16 @@ public class ReminderUtil {
         // time. The reminder will automatically trigger at the trigger time at the next occurrence based on the
         // recurrence pattern.
         LocalDateTime triggerTime = LocalDateTime.now();
+        LocalDateTime testTriggerTime = LocalDateTime.of(2020, Month.MARCH, 11,11,18);
 
-        Recurrence recurrence = Recurrence.builder()
-                .addByDayItem(RecurrenceDay.FR)
-                .withFreq(RecurrenceFreq.WEEKLY)
-                .build();
+//        Recurrence recurrence = Recurrence.builder()
+//                .addByDayItem(RecurrenceDay.FR)
+//                .withFreq(RecurrenceFreq.WEEKLY)
+//                .build();
 
         Trigger trigger = Trigger.builder()
                 .withType(TriggerType.SCHEDULED_ABSOLUTE)
                 .withScheduledTime(triggerTime)
-                .withRecurrence(recurrence)
                 .withTimeZoneId("America/Los_Angeles")
                 .build();
 

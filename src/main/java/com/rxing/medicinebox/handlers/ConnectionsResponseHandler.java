@@ -59,30 +59,30 @@ public class ConnectionsResponseHandler implements com.amazon.ask.dispatcher.req
                         medicine = mapper.readValue(token, Medicine.class);
                     } catch (IOException var12) {
                         log.error("Error deserializing token", var12);
-                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(true).build();
+                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(false).build();
                     }
 
                     try {
                         ReminderUtil.createReminder(input);
                         String speechText = String.format("Reminder for %s set", medicine.getDrugName());
-                        return input.getResponseBuilder().withSimpleCard("Channel Guide", speechText).withSpeech(speechText).withShouldEndSession(true).build();
+                        return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
                     } catch (ServiceException var13) {
                         log.error("Error creating reminder", var13);
                         if (var13.getStatusCode() == 403) {
-                            return input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(true).build();
+                            return input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(false).build();
                         }
 
-                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(true).build();
+                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(false).build();
                     }
                 case 1:
-                    return input.getResponseBuilder().withShouldEndSession(true).build();
+                    return input.getResponseBuilder().withShouldEndSession(false).build();
                 case 2:
                 default:
-                    return input.getResponseBuilder().withSpeech("Please enable Reminder permissions in the Amazon Alexa app using the card I've sent to your Alexa app.").withShouldEndSession(true).build();
+                    return input.getResponseBuilder().withSpeech("Please enable Reminder permissions in the Amazon Alexa app using the card I've sent to your Alexa app.").withShouldEndSession(false).build();
             }
         } else {
             log.error("ConnectionsResponse indicated failure. Error: " + connectionsResponse.getStatus().getMessage());
-            return input.getResponseBuilder().withSpeech("Please enable Reminder permissions in the Amazon Alexa app using the card I've sent to your Alexa app.").withAskForPermissionsConsentCard(Collections.singletonList("alexa::alerts:reminders:skill:readwrite")).withShouldEndSession(true).build();
+            return input.getResponseBuilder().withSpeech("Please enable Reminder permissions in the Amazon Alexa app using the card I've sent to your Alexa app.").withAskForPermissionsConsentCard(Collections.singletonList("alexa::alerts:reminders:skill:readwrite")).withShouldEndSession(false).build();
         }
     }
 }
