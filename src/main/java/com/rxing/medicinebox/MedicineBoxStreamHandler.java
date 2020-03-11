@@ -19,8 +19,7 @@ public class MedicineBoxStreamHandler extends SkillStreamHandler {
                         new CreateReminderIntentHandler(),
                         new YesIntentHandler(),
                         new NoIntentHandler(),
-                        new ConnectionsResponseHandler(),
-                        new SessionEndedRequestHandler())
+                        new ConnectionsResponseHandler())
                 .withSkillId("amzn1.ask.skill.9f64aeb9-c2dd-4989-8f9c-06aae7f38282")
                 .withTableName("MedicineBox")
                 .withAutoCreateTable(true)

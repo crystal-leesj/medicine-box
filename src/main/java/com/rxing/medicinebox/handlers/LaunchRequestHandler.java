@@ -15,7 +15,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     public Optional<Response> handle(HandlerInput handlerInput) {
 
-        String speechText = "Welcome to your medicine box. If you are a new user say help me to learn all available commands";
+        String speechText = "Welcome to your medicine box. say help me for a list of available commands";
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)
                 .withShouldEndSession(false)

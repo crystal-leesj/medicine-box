@@ -60,8 +60,8 @@ public class CreateReminderIntentHandler implements RequestHandler {
     private Optional<Response> createResponse(HandlerInput input, String speechText, boolean endSession) {
         return input.getResponseBuilder()
                 .withSpeech(speechText)
-                .withShouldEndSession(endSession
-                ).build();
+                .withShouldEndSession(endSession)
+                .build();
     }
 
     private Medicine lookupMed(String med , HandlerInput handlerInput) {

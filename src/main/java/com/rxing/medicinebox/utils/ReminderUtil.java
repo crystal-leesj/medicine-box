@@ -30,7 +30,7 @@ public class ReminderUtil {
         // For recurring reminders, the trigger date can be set to now() with the time component set to the trigger
         // time. The reminder will automatically trigger at the trigger time at the next occurrence based on the
         // recurrence pattern.
-        LocalDateTime triggerTime = LocalDateTime.now(ZoneId.of("PST"));
+        LocalDateTime triggerTime = LocalDateTime.now(ZoneId.of("US/Pacific-New"));
         LocalDateTime testTriggerTime = LocalDateTime.of(2020, Month.MARCH, 11,11,18);
 
 //        Recurrence recurrence = Recurrence.builder()
@@ -41,7 +41,6 @@ public class ReminderUtil {
         Trigger trigger = Trigger.builder()
                 .withType(TriggerType.SCHEDULED_ABSOLUTE)
                 .withScheduledTime(triggerTime)
-                .withTimeZoneId("America/Los_Angeles")
                 .build();
 
         PushNotification pushNotification = PushNotification.builder()
