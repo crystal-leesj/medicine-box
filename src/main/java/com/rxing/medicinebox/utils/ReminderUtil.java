@@ -28,7 +28,7 @@ public class ReminderUtil {
         // For recurring reminders, the trigger date can be set to now() with the time component set to the trigger
         // time. The reminder will automatically trigger at the trigger time at the next occurrence based on the
         // recurrence pattern.
-        LocalDateTime triggerTime = LocalDateTime.now();
+        LocalDateTime triggerTime = LocalDateTime.now().plusSeconds(30);
 
         Recurrence recurrence = Recurrence.builder()
                 .addByDayItem(RecurrenceDay.FR)
