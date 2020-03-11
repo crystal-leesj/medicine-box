@@ -34,7 +34,8 @@ public class GetSingleMedicationIntentHandler implements RequestHandler {
             String jsonGarbage = (String) persistentStorage.get(drugName);
             Gson gsonBuilder = new GsonBuilder().create();
             Medicine m = gsonBuilder.fromJson(jsonGarbage, Medicine.class);
-            speechText = "You are taking: " + m.getDrugName();
+            speechText = String.format("Here's what I have for %s.  You are taking a dose of %s %s, and you are taking %s pills %s times a day.  You started this medication on %s and will stop on %s",
+                    m.getDrugName(), m.getDoseAmount(), m.getDoseScale(), m.getFrequencyPeriod(), m.getFrequencyByPeriod(), m.getStartDate(), m.getEndDate());
         } else {
             speechText = "You don't have that medicine in your box.";
         }
