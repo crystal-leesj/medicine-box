@@ -6,16 +6,15 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.request.Predicates;
 import java.util.Optional;
 
-public class NoIntentHandler implements RequestHandler {
-    public NoIntentHandler() {
+public class CancelStopRequestHandler implements RequestHandler {
+    public CancelStopRequestHandler() {
     }
 
     public boolean canHandle(HandlerInput input) {
-        return input.matches(Predicates.intentName("AMAZON.NoIntent"));
+        return input.matches(Predicates.intentName("AMAZON.CancelIntent")) || input.matches(Predicates.intentName("AMAZON.StopIntent"));
     }
 
     public Optional<Response> handle(HandlerInput input) {
-        return input.getResponseBuilder().withSpeech("Ok, I will not set a reminder.").withShouldEndSession(false).build();
+        return input.getResponseBuilder().withSpeech("Goodbye").withShouldEndSession(true).build();
     }
 }
-

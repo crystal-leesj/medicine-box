@@ -35,7 +35,7 @@ public class YesIntentHandler implements RequestHandler {
             try {
                 ReminderUtil.createReminder(input);
                 token = String.format("Reminder for %s medication", medicine.getDrugName());
-                return input.getResponseBuilder().withSimpleCard("Channel Guide", token).withSpeech(token).withShouldEndSession(true).build();
+                return input.getResponseBuilder().withSpeech(token).withShouldEndSession(false).build();
             } catch (ServiceException var9) {
                 log.error("Error creating reminder", var9);
                 if (var9.getStatusCode() == 401) {
@@ -48,9 +48,9 @@ public class YesIntentHandler implements RequestHandler {
                     }
 
                     SendRequestDirective directive = this.getRequestSkillPermissionRequestDirective(token);
-                    return input.getResponseBuilder().addDirective(directive).withShouldEndSession(true).build();
+                    return input.getResponseBuilder().addDirective(directive).withShouldEndSession(false).build();
                 } else {
-                    return var9.getStatusCode() == 403 ? input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(true).build() : input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(true).build();
+                    return var9.getStatusCode() == 403 ? input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(false).build() : input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(false).build();
                 }
             }
         } else {
