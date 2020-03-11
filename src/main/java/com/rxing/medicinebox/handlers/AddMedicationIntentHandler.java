@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rxing.medicinebox.models.Medicine;
 
-import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 

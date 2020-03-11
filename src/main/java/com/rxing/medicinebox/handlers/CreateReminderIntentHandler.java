@@ -2,67 +2,19 @@ package com.rxing.medicinebox.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.IntentRequest;
-import com.amazon.ask.model.Permissions;
-import com.amazon.ask.model.Response;
-import com.amazon.ask.model.Slot;
-import com.amazon.ask.model.services.reminderManagement.*;
+import com.amazon.ask.model.*;
 import com.amazon.ask.request.Predicates;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rxing.medicinebox.models.Medicine;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class CreateReminderIntentHandler implements RequestHandler {
-    private ReminderResponse createReminder(HandlerInput input, String reminderLabel) {
+    public CreateReminderIntentHandler(){}
 
-        SpokenText spokenText = SpokenText.builder()
-                .withText(reminderLabel)
-                .withLocale("en-US")
-                .build();
-
-        AlertInfoSpokenInfo alertInfoSpokenInfo = AlertInfoSpokenInfo.builder()
-                .addContentItem(spokenText)
-                .build();
-
-        AlertInfo alertInfo = AlertInfo.builder()
-                .withSpokenInfo(alertInfoSpokenInfo)
-                .build();
-
-//        LocalDateTime triggerTime = LocalDateTime.now().plusSeconds(5);
-        LocalDateTime triggerTime = LocalDateTime.of(2020, 02, 10, 14, 35, 00);
-
-//        Recurrence recurrence = Recurrence.builder()
-//                .addByDayItem(RecurrenceDay.FR)
-//                .withFreq(RecurrenceFreq.WEEKLY)
-//                .build();
-
-        Trigger trigger = Trigger.builder()
-                .withType(TriggerType.SCHEDULED_ABSOLUTE)
-                .withScheduledTime(triggerTime)
-//                .withRecurrence(recurrence)
-                .withTimeZoneId("America/Los_Angeles")
-                .build();
-
-        PushNotification pushNotification = PushNotification.builder()
-                .withStatus(PushNotificationStatus.ENABLED)
-                .build();
-
-        ReminderRequest reminderRequest = ReminderRequest.builder()
-                .withAlertInfo(alertInfo)
-                .withRequestTime(OffsetDateTime.now())
-                .withTrigger(trigger)
-                .withPushNotification(pushNotification)
-                .build();
-
-        return input.getServiceClientFactory().getReminderManagementService().createReminder(reminderRequest);
-    }
     @Override
     public boolean canHandle(HandlerInput handlerInput) {
         return handlerInput.matches(Predicates.intentName("CreateReminder"));
@@ -82,60 +34,40 @@ public class CreateReminderIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput handlerInput) {
 
-        //TODO: Grab data from Medicine model, add Reminder data
-        // persistent storage from dynamo db
-//        Map<String, Object> persistentStorage = handlerInput.getAttributesManager().getPersistentAttributes();
-//
-//        // get slot values
-//        IntentRequest intentRequest = (IntentRequest) handlerInput.getRequestEnvelope().getRequest();
-//        Map<String, Slot> slots = intentRequest.getIntent().getSlots();
-//        String drugName = slots.get("name").getValue();
-//        String doseAmount = slots.get("doseAmount").getValue();
-//        String doseScale = slots.get("doseScale").getValue();
-//        String startDate = slots.get("start_Date").getValue();
-//        String endDate = slots.get("end_Date").getValue();
-//        String frequencyPeriod = slots.get("frequencyPeriod").getValue();
-//        String frequencyByPeriod = slots.get("frequencyByPeriod").getValue();
-//
-//        // create medicine and jsonify object
-//        Medicine newMed = new Medicine(drugName, doseAmount, doseScale, startDate, endDate, frequencyPeriod, frequencyByPeriod);
-//        Gson gsonBuilder = new GsonBuilder().create();
-//        String newMedJson = gsonBuilder.toJson(newMed);
-//
-//        // put attribute and save
-//        persistentStorage.put(drugName, newMedJson);
-//        handlerInput.getAttributesManager().setPersistentAttributes(persistentStorage);
-//        handlerInput.getAttributesManager().savePersistentAttributes();
-//        //TODO: label is "take {doseAmount} of {name}"
-//        // take your 2 pills of tylenol by {current time that the reminder goes}
+        Request request = handlerInput.getRequestEnvelope().getRequest();
+        IntentRequest intentRequest = (IntentRequest) request;
+        Intent intent = intentRequest.getIntent();
+        Map<String, Slot> slots = intent.getSlots();
+        Slot medicationName = slots.get("name");
+        if (medicationName == null) {
+            return this.createResponse(handlerInput, "Please provide a medication to lookup.", false);
+        } else {
+            Medicine medMatch = this.lookupMed(medicationName.getValue(), handlerInput);
+            String speechText;
+            if (medMatch == null) {
+                speechText = String.format("Couldn't find any medication called %s", medicationName.getValue());
+                return this.createResponse(handlerInput, speechText, true);
+            } else {
+                Map<String, Object> attributes = new HashMap<>();
+                attributes.put("medicine", medMatch);
+                attributes.put("previousIntent", "CreateReminder");
+                handlerInput.getAttributesManager().setSessionAttributes(attributes);
+                speechText = String.format("%s beginning on %s. Would you like me to remind you when to take it?", medMatch.getDrugName(), medMatch.getStartDate());
+                return this.createResponse(handlerInput, speechText, false);
+            }
+        }
+    }
+    private Optional<Response> createResponse(HandlerInput input, String speechText, boolean endSession) {
+        return input.getResponseBuilder().withSimpleCard("Channel Guide", speechText).withSpeech(speechText).withShouldEndSession(endSession).build();
+    }
 
-        //TODO: permissions does not have to be done
-
-//        Permissions permissions = handlerInput.getRequestEnvelope().getContext().getSystem().getUser().getPermissions();
-//        if(null!=permissions){
-//            String speechText = "In order for this skill to create a reminder, please grant permission using the card I sent to your Alexa app";
-//            List<String> list = new ArrayList<>();
-//            list.add("alexa::alerts:reminders:skill:readwrite");
-//            return handlerInput.getResponseBuilder()
-//                    .withSpeech(speechText)
-//                    .withAskForPermissionsConsentCard(list)
-//                    .build();
-//        }
-//        String locale = handlerInput.getRequestEnvelope().getRequest().getLocale();
-//        createReminder(handlerInput, "Time To Medicate!");
-        String speechText = "Ok, I will remind you to medicate every 5 secs";
-        return handlerInput.getResponseBuilder()
-                .withSpeech(speechText)
-                .withShouldEndSession(false)
-                .build();
-
-
-
-        // create speech for return statement
-//        String speechText = "Reminders??";
-//        return handlerInput.getResponseBuilder()
-//                .withSpeech(speechText)
-//                .withShouldEndSession(false)
-//                .build();
+    private Medicine lookupMed(String med , HandlerInput handlerInput) {
+        Map<String, Object> persistentStorage = handlerInput.getAttributesManager().getPersistentAttributes();
+        if (persistentStorage.containsKey(med)) {
+            String jsonGarbage = (String) persistentStorage.get(med);
+            Gson gsonBuilder = new GsonBuilder().create();
+            return gsonBuilder.fromJson(jsonGarbage, Medicine.class);
+        }
+        return null;
     }
 }
