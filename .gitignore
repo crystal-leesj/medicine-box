@@ -39,6 +39,7 @@ captures/
 
 # Intellij
 *.iml
+.idea/
 **/.idea/workspace.xml
 **/.idea/tasks.xml
 **/.idea/gradle.xml
@@ -210,4 +211,8 @@ Temporary Items
 
 # End of https://www.gitignore.io/api/java,macos,android,androidstudio
 **markdown-navigator.xml
-BuyCheapStuff
+
+
+# Maven
+log/
+target/
