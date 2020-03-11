@@ -3,10 +3,7 @@ package com.rxing.medicinebox.utils;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.services.reminderManagement.*;
 
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
+import java.time.*;
 
 @SuppressWarnings("UnusedReturnValue")
 public class ReminderUtil {
@@ -30,9 +27,10 @@ public class ReminderUtil {
         // For recurring reminders, the trigger date can be set to now() with the time component set to the trigger
         // time. The reminder will automatically trigger at the trigger time at the next occurrence based on the
         // recurrence pattern.
-        LocalDateTime triggerTime = LocalDateTime.now();
-        LocalDateTime testTriggerTime = LocalDateTime.of(2020, Month.MARCH, 11,11,18);
-
+//        ZoneId zoneId = ZoneId.of("UTC");
+        LocalDateTime triggerTime = LocalDateTime.now().minusHours(7).plusSeconds(30);
+//        LocalDateTime testTriggerTime = LocalDateTime.of(2020, Month.MARCH, 11,11,18);
+//
 //        Recurrence recurrence = Recurrence.builder()
 //                .addByDayItem(RecurrenceDay.FR)
 //                .withFreq(RecurrenceFreq.WEEKLY)
