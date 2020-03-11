@@ -15,7 +15,7 @@ public class NoIntentHandler implements RequestHandler {
     }
 
     public Optional<Response> handle(HandlerInput input) {
-        return input.getResponseBuilder().withSpeech("Ok, I will not set a reminder.").withShouldEndSession(true).build();
+        return input.getResponseBuilder().withSpeech("Ok, I will not set a reminder.").withShouldEndSession(false).build();
     }
 }
 
