@@ -46,9 +46,7 @@ public class AddMedicationIntentHandler implements RequestHandler {
         handlerInput.getAttributesManager().savePersistentAttributes();
 
         // create speech for return statement
-        String speechText = String.format(
-                "You added %s with a dosage of %s %s.  You are starting this medication on %s and ending on %s.  You are scheduled to take this %s a %s",
-                drugName, doseAmount, doseScale, startDate, endDate, frequencyPeriod, frequencyByPeriod);
+        String speechText = "I added it to your medicine box.";
         return handlerInput.getResponseBuilder()
                 .withSpeech(speechText)
                 .withShouldEndSession(false)

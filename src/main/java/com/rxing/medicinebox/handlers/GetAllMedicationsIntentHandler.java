@@ -20,13 +20,14 @@ public class GetAllMedicationsIntentHandler implements RequestHandler {
         // persistent storage from dynamo db
         Map<String, Object> persistentStorage = handlerInput.getAttributesManager().getPersistentAttributes();
 
-        StringBuilder speechText = new StringBuilder("Here's a list of your medications. ");
+        String speechText;
         if (persistentStorage.isEmpty()) {
-            speechText = new StringBuilder("You don't have any meds");
+            speechText = "Currently your medicine box is empty.  Say add a medication to put something into your box or say help me to learn more.";
         } else {
+            speechText = "Here are the medications currently in your box.  You are taking ";
             Set<String> meds = persistentStorage.keySet();
             for (String med : meds) {
-                speechText.append(med).append(", ");
+                speechText += med + ", ";
             }
         }
 
