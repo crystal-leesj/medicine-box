@@ -72,7 +72,7 @@ Alexa Skills, AWS Lambda, AWS DynamoDB, AWS CloudWatch, AWS IAM, Maven, GSON, Al
 
 ### Set up the skill
 1. On the Amazon Developer Console, create a skill
-   2. choose Custom and Create skill
+   1. choose Custom and Create skill
 2. Add [JSON](savedJsonForAlexaSkill/openMedicine.json) to the JSON Editor and save Model then build
 3. On the Permissions, enable Reminders and Location
 4. On the EndPoint, choose AWS Lambda and copy the skill id.
