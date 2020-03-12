@@ -9,9 +9,9 @@ import java.time.*;
 @SuppressWarnings("UnusedReturnValue")
 public class ReminderUtil {
 
-    public static ReminderResponse createReminder(HandlerInput input, String medicationName) {
+    public static ReminderResponse createReminder(HandlerInput input, Medicine medicine) {
 //        String reminderLabel = String.format("It's time for %s", show.getName());
-        String reminderLabel = String.format("Time To Medicate %s !", medicationName);
+        String reminderLabel = String.format("Time To Medicate With %s!", medicine.getDrugName());
         SpokenText spokenText = SpokenText.builder()
                 .withText(reminderLabel)
                 .withLocale("en-US")
