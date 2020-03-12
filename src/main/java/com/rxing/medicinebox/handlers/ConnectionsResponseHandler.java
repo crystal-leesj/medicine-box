@@ -63,7 +63,7 @@ public class ConnectionsResponseHandler implements com.amazon.ask.dispatcher.req
                     }
 
                     try {
-                        ReminderUtil.createReminder(input);
+                        ReminderUtil.createReminder(input, medicine);
                         String speechText = String.format("Reminder for %s set", medicine.getDrugName());
                         return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
                     } catch (ServiceException var13) {
