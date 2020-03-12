@@ -23,7 +23,7 @@ public class SessionEndedRequestHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         RequestEnvelope envelope = input.getRequestEnvelope();
         log.info("onSessionEnded requestId={}, sessionId={}", envelope.getRequest().getRequestId(), envelope.getSession().getSessionId());
-        return input.getResponseBuilder().build();
+        return input.getResponseBuilder().withSpeech("Goodbye, talk to you tomorrow.").build();
     }
 }
 
