@@ -11,6 +11,7 @@ import com.amazon.ask.request.Predicates;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,12 +30,12 @@ public class YesIntentHandler implements RequestHandler {
         if (previousIntent != null && previousIntent.equals("CreateReminder")) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
-            Medicine medicine = mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("name"), Medicine.class);
+            Medicine medicine = mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("medicine"), Medicine.class);
 
             String token;
             try {
-                ReminderUtil.createReminder(input);
-                token = String.format("Reminder for %s medication", medicine.getDrugName());
+                ReminderUtil.createReminder(input, medicine);
+                token = String.format("Reminder for %s medication added, Say create reminder if you another one or say exit to leave ", medicine.getDrugName());
                 return input.getResponseBuilder().withSpeech(token).withShouldEndSession(false).build();
             } catch (ServiceException var9) {
                 log.error("Error creating reminder", var9);

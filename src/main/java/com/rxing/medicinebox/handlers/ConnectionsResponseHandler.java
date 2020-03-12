@@ -59,11 +59,11 @@ public class ConnectionsResponseHandler implements com.amazon.ask.dispatcher.req
                         medicine = mapper.readValue(token, Medicine.class);
                     } catch (IOException var12) {
                         log.error("Error deserializing token", var12);
-                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(false).build();
+                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder. Line 62").withShouldEndSession(false).build();
                     }
 
                     try {
-                        ReminderUtil.createReminder(input);
+                        ReminderUtil.createReminder(input, medicine);
                         String speechText = String.format("Reminder for %s set", medicine.getDrugName());
                         return input.getResponseBuilder().withSpeech(speechText).withShouldEndSession(false).build();
                     } catch (ServiceException var13) {
@@ -72,7 +72,7 @@ public class ConnectionsResponseHandler implements com.amazon.ask.dispatcher.req
                             return input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(false).build();
                         }
 
-                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(false).build();
+                        return input.getResponseBuilder().withSpeech("There was an error when setting the reminder. Line 75").withShouldEndSession(false).build();
                     }
                 case 1:
                     return input.getResponseBuilder().withShouldEndSession(false).build();
