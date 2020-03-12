@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "my a b c med box",
+      "invocationName": "my med box demo",
       "intents": [
         {
           "name": "AMAZON.FallbackIntent",
@@ -158,6 +158,13 @@
         {
           "name": "AMAZON.NoIntent",
           "samples": []
+        },
+        {
+          "name": "Exit",
+          "slots": [],
+          "samples": [
+            "exit"
+          ]
         }
       ],
       "types": [
