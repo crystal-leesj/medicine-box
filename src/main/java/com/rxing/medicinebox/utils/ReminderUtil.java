@@ -2,17 +2,18 @@ package com.rxing.medicinebox.utils;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.services.reminderManagement.*;
+import com.rxing.medicinebox.models.Medicine;
 
 import java.time.*;
 
 @SuppressWarnings("UnusedReturnValue")
 public class ReminderUtil {
 
-    public static ReminderResponse createReminder(HandlerInput input) {
+    public static ReminderResponse createReminder(HandlerInput input, String medicationName) {
 //        String reminderLabel = String.format("It's time for %s", show.getName());
-
+        String reminderLabel = String.format("Time To Medicate %s !", medicationName);
         SpokenText spokenText = SpokenText.builder()
-                .withText("Time To Medicate!")
+                .withText(reminderLabel)
                 .withLocale("en-US")
                 .build();
 
