@@ -6,16 +6,15 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.request.Predicates;
 import java.util.Optional;
 
-public class NoIntentHandler implements RequestHandler {
-    public NoIntentHandler() {
+public class FallbackIntentHandler implements RequestHandler {
+    public FallbackIntentHandler() {
     }
 
     public boolean canHandle(HandlerInput input) {
-        return input.matches(Predicates.intentName("AMAZON.NoIntent"));
+        return input.matches(Predicates.intentName("AMAZON.FallbackIntent"));
     }
 
     public Optional<Response> handle(HandlerInput input) {
-        return input.getResponseBuilder().withSpeech("Ok, I will not set a reminder.").withShouldEndSession(false).build();
+        return input.getResponseBuilder().withSpeech("Hmm. I'm not sure how to help you with that. This skill can set reminders for your medication.").withShouldEndSession(false).build();
     }
 }
-

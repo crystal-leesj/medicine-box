@@ -11,6 +11,7 @@ import com.amazon.ask.request.Predicates;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,13 +30,13 @@ public class YesIntentHandler implements RequestHandler {
         if (previousIntent != null && previousIntent.equals("CreateReminder")) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
-            Medicine medicine = mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("name"), Medicine.class);
+            Medicine medicine = mapper.convertValue(input.getAttributesManager().getSessionAttributes().get("medicine"), Medicine.class);
 
             String token;
             try {
-                ReminderUtil.createReminder(input);
-                token = String.format("Reminder for %s medication", medicine.getDrugName());
-                return input.getResponseBuilder().withSimpleCard("Channel Guide", token).withSpeech(token).withShouldEndSession(true).build();
+                ReminderUtil.createReminder(input, medicine);
+                token = String.format("Reminder for %s medication added, Say create reminder if you another one or say exit to leave ", medicine.getDrugName());
+                return input.getResponseBuilder().withSpeech(token).withShouldEndSession(false).build();
             } catch (ServiceException var9) {
                 log.error("Error creating reminder", var9);
                 if (var9.getStatusCode() == 401) {
@@ -48,9 +49,9 @@ public class YesIntentHandler implements RequestHandler {
                     }
 
                     SendRequestDirective directive = this.getRequestSkillPermissionRequestDirective(token);
-                    return input.getResponseBuilder().addDirective(directive).withShouldEndSession(true).build();
+                    return input.getResponseBuilder().addDirective(directive).withShouldEndSession(false).build();
                 } else {
-                    return var9.getStatusCode() == 403 ? input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(true).build() : input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(true).build();
+                    return var9.getStatusCode() == 403 ? input.getResponseBuilder().withSpeech("Sorry, this device doesn't support reminders.").withShouldEndSession(false).build() : input.getResponseBuilder().withSpeech("There was an error when setting the reminder.").withShouldEndSession(false).build();
                 }
             }
         } else {

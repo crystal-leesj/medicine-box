@@ -7,6 +7,8 @@ import com.amazon.ask.request.Predicates;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rxing.medicinebox.models.Medicine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +48,7 @@ public class CreateReminderIntentHandler implements RequestHandler {
             String speechText;
             if (medMatch == null) {
                 speechText = String.format("Couldn't find any medication called %s", medicationName.getValue());
-                return this.createResponse(handlerInput, speechText, true);
+                return this.createResponse(handlerInput, speechText, false);
             } else {
                 Map<String, Object> attributes = new HashMap<>();
                 attributes.put("medicine", medMatch);
@@ -58,7 +60,10 @@ public class CreateReminderIntentHandler implements RequestHandler {
         }
     }
     private Optional<Response> createResponse(HandlerInput input, String speechText, boolean endSession) {
-        return input.getResponseBuilder().withSimpleCard("Channel Guide", speechText).withSpeech(speechText).withShouldEndSession(endSession).build();
+        return input.getResponseBuilder()
+                .withSpeech(speechText)
+                .withShouldEndSession(endSession)
+                .build();
     }
 
     private Medicine lookupMed(String med , HandlerInput handlerInput) {
