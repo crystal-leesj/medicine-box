@@ -15,6 +15,6 @@ public class FallbackIntentHandler implements RequestHandler {
     }
 
     public Optional<Response> handle(HandlerInput input) {
-        return input.getResponseBuilder().withSpeech("Hmm. I'm not sure how to help you with that. This skill can set reminders.").withShouldEndSession(false).build();
+        return input.getResponseBuilder().withSpeech("Hmm. I'm not sure how to help you with that. This skill can set reminders for your medication.").withShouldEndSession(false).build();
     }
 }
