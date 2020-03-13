@@ -93,7 +93,7 @@ ___
 3. On the Permissions, enable Reminders and Location
 4. On the EndPoint, choose AWS Lambda and copy the skill id.
 
-## Set up AWS Lambda
+### Set up AWS Lambda
 1. create a new function within AWS Lambda
 2. Add Alexa Skills kit as a trigger
    1. paste the skill id from the developer console
@@ -103,6 +103,6 @@ ___
 5. Copy the ARN on top and add it as the Default EndPoint in the Developer Console.
 6. Set up the lambda user permissions to all DynamoDB policies
 
-## To Run
+### To Run
 With in the Developer Console run the skill in Test, invoking the skill using `my med box demo`
 
