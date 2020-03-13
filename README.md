@@ -36,12 +36,8 @@ Alexa Skills, AWS Lambda, AWS DynamoDB, AWS CloudWatch, AWS IAM, Maven, GSON, Al
 
 ___
 
-### Skill Image
+### Skill Image As Seen In Console
 
-![Skill Image](images/alexaDevConsole.png
-
-
-## Application as it is in the console:
 ![screenshot-1](images/screenshot-1.png)
 
 ![screenshot-2](images/screenshot-2.png)
