@@ -32,7 +32,7 @@ public class GetAllMedicationsIntentHandler implements RequestHandler {
         }
 
         return handlerInput.getResponseBuilder()
-                .withSpeech(speechText.toString())
+                .withSpeech(speechText)
                 .withShouldEndSession(false)
                 .build();
     }

@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "my paeon",
+      "invocationName": "my med box demo",
       "intents": [
         {
           "name": "AMAZON.FallbackIntent",
@@ -30,6 +30,7 @@
               "name": "name",
               "type": "name",
               "samples": [
+                "uh {name}",
                 "{name}"
               ]
             },
@@ -44,6 +45,7 @@
               "name": "doseScale",
               "type": "doseScale",
               "samples": [
+                "uh {doseAmount}",
                 "{doseScale}"
               ]
             },
@@ -51,6 +53,7 @@
               "name": "start_Date",
               "type": "AMAZON.DATE",
               "samples": [
+                "uh {start_Date}",
                 "{start_Date}"
               ]
             },
@@ -146,6 +149,21 @@
             "i want to add a reminder",
             "create reminder",
             "i want to create a reminder for my medicine"
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        },
+        {
+          "name": "Exit",
+          "slots": [],
+          "samples": [
+            "exit"
           ]
         }
       ],
@@ -560,7 +578,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Do you want to know about a single medication?"
+            "value": "Did you want details for {name} ?"
           }
         ]
       },
@@ -596,7 +614,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Do you want to add a medication?"
+            "value": "Do you want to add {doseAmount} {doseScale} {name} which you take {frequencyPeriod} {frequencyByPeriod} starting on {start_Date} and ending on {end_Date} ?"
           }
         ]
       },
@@ -632,7 +650,7 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Do you want to create a reminder for one of your medications?"
+            "value": "Do you want to create a reminder for {name} ?"
           }
         ]
       }
