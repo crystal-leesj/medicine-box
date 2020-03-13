@@ -634,8 +634,141 @@
 		"dialogState": "COMPLETED"
 	}
 }
+
+
+//////////EDGE CASE//////////
+
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.dc5366a7-d1a0-4036-8002-ad648af5017a",
+		"application": {
+			"applicationId": "amzn1.ask.skill.9f64aeb9-c2dd-4989-8f9c-06aae7f38282"
+		},
+		"user": {
+			"userId": "amzn1.ask.account.AEYNFATTGGG5EREWD5WGYR7LNBKOGABGAFFF2JTH4VHPQ2ANJSD3JSDJZLO4DT524NXWM6E3PLHVVOY4T3XOLIE2BWSJHKZTNWP7C3UCOHSQDCB6VXWW2JBR5EE3O75OSJIE6JKVS5WYOGCROML4PFPGPT23VEWGX6GMHELTLAM5WUIBNSFMYDM63FAXGGVRJLNZS77F6XUOGUA",
+			"permissions": {
+				"scopes": {
+					"alexa::devices:all:geolocation:read": {
+						"status": "DENIED"
+					}
+				}
+			}
+		}
+	},
+	"context": {
+		"System": {
+			"application": {
+				"applicationId": "amzn1.ask.skill.9f64aeb9-c2dd-4989-8f9c-06aae7f38282"
+			},
+			"user": {
+				"userId": "amzn1.ask.account.AEYNFATTGGG5EREWD5WGYR7LNBKOGABGAFFF2JTH4VHPQ2ANJSD3JSDJZLO4DT524NXWM6E3PLHVVOY4T3XOLIE2BWSJHKZTNWP7C3UCOHSQDCB6VXWW2JBR5EE3O75OSJIE6JKVS5WYOGCROML4PFPGPT23VEWGX6GMHELTLAM5WUIBNSFMYDM63FAXGGVRJLNZS77F6XUOGUA",
+				"permissions": {
+					"scopes": {
+						"alexa::devices:all:geolocation:read": {
+							"status": "DENIED"
+						}
+					}
+				}
+			},
+			"device": {
+				"deviceId": "amzn1.ask.device.AFPXGHRWNOFKXRJD3C43RALXY6ZRTOEQ6EDK2FS7DDN5XLCEXLNBG4SI4BWGWKSBYHFCRPKYD2LUCM4DPGD3CWJ6LKCWERDAKDZZET76QP2ZYEF54UAW57QEQPARGADT3DN62J6YDGS2T4LDGWGWKO5UCULAOCJC6MHV4CHKOJJXKFMP4A4J6",
+				"supportedInterfaces": {}
+			},
+			"apiEndpoint": "https://api.amazonalexa.com",
+			"apiAccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJhdWQiOiJodHRwczovL2FwaS5hbWF6b25hbGV4YS5jb20iLCJpc3MiOiJBbGV4YVNraWxsS2l0Iiwic3ViIjoiYW16bjEuYXNrLnNraWxsLjlmNjRhZWI5LWMyZGQtNDk4OS04ZjljLTA2YWFlN2YzODI4MiIsImV4cCI6MTU4NDA3ODkwMCwiaWF0IjoxNTg0MDc4NjAwLCJuYmYiOjE1ODQwNzg2MDAsInByaXZhdGVDbGFpbXMiOnsibm9uTHdhU2NvcGVzIjoiYWxleGE6OnBlcnNvbl9pZDpyZWFkIiwiY29udGV4dCI6IkFBQUFBQUFBQUFCNHpXQzlKWTkvQzhqblBqc3h4ME5GS3dFQUFBQUFBQUNYeHd1ZVM5ZEp0MlpqZDRCdnFZekZSQVV2ZWZLRlhwTjdYTDY0VDZ2cU9SbnBzeHhWRFNkK0Z4UGFaaGxNR2pIc2xyTUZ4a2kzZCtkaGg2NGUwclNZcXpqMWg0emJ6SHpnWmVVUis1djhQRGZsNTNud3IvRFFMVGx6WlJyMUJXNit6cm9RWGhTVHQvczczZnZuVlhreWxzQ2JxZzBvOStHRzhiVG13NHV4UUVRMm9LdGJ6aC81SnAydEUzYjNTeVNxdFFtTVIxcVk3NjVJOGE0cC8vY2p0eVFsbHZXaE5PS0VyMjBSdVB3cmlwQm8wTTFlbWZwM2JXaTd0eDRrK0NPTklGZHJlSSt1SkNzRUlyVTZRU3hHR0ZxUGtBbUl0OE0rSzUxOEZYYWl1MTFMd0pGTGI0YVB5R3JGU0lCZXhRY29vTlBqeW1JQzZmakJxZmt5UjR3dUZ2eE9VUFVvM2k5cDgvWi9KYXdIckxPa1RYeXYzbzUzSFRhejdGTlErU2Rac21wZm82UWRZRFMveHc9PSIsImNvbnNlbnRUb2tlbiI6bnVsbCwiZGV2aWNlSWQiOiJhbXpuMS5hc2suZGV2aWNlLkFGUFhHSFJXTk9GS1hSSkQzQzQzUkFMWFk2WlJUT0VRNkVESzJGUzdERE41WExDRVhMTkJHNFNJNEJXR1dLU0JZSEZDUlBLWUQyTFVDTTREUEdEM0NXSjZMS0NXRVJEQUtEWlpFVDc2UVAyWllFRjU0VUFXNTdRRVFQQVJHQURUM0RONjJKNllER1MyVDRMREdXR1dLTzVVQ1VMQU9DSkM2TUhWNENIS09KSlhLRk1QNEE0SjYiLCJ1c2VySWQiOiJhbXpuMS5hc2suYWNjb3VudC5BRVlORkFUVEdHRzVFUkVXRDVXR1lSN0xOQktPR0FCR0FGRkYySlRINFZIUFEyQU5KU0QzSlNESlpMTzREVDUyNE5YV002RTNQTEhWVk9ZNFQzWE9MSUUyQldTSkhLWlROV1A3QzNVQ09IU1FEQ0I2VlhXVzJKQlI1RUUzTzc1T1NKSUU2SktWUzVXWU9HQ1JPTUw0UEZQR1BUMjNWRVdHWDZHTUhFTFRMQU01V1VJQk5TRk1ZRE02M0ZBWEdHVlJKTE5aUzc3RjZYVU9HVUEifX0.XXmMA4ekPyvmDW-gpw4lumenqSD69-3mIyNaHn4mHYhyJF_nHyT6IAd-1z5WqewAPHO42MBtGZsJWSbWQbdYCAaa53fzBYJSl4pQunknKVAZR8xlZ3ZCbSfqAjkh0l4XMPSJrEMpqKy2OgGUSO9pJ452rr6mtHTHUcee9S8JQQWoQ9oobOFSXE5N41ADIpTcZu3xditY49XDDQjFSrM19-aPzABzwptygtwlKgvF3c-OHS2nA57n2LBw0ULNRODyij_-gMN_Y51Z-mGIFJFsvCObcfhUAwbX3mlKMYMhdp4UuqTPDvglSn6bWp0h8Ib7nVmLQhRqNA_O66DbqFXdXQ"
+		},
+		"Viewport": {
+			"experiences": [
+				{
+					"arcMinuteWidth": 246,
+					"arcMinuteHeight": 144,
+					"canRotate": false,
+					"canResize": false
+				}
+			],
+			"shape": "RECTANGLE",
+			"pixelWidth": 1024,
+			"pixelHeight": 600,
+			"dpi": 160,
+			"currentPixelWidth": 1024,
+			"currentPixelHeight": 600,
+			"touch": [
+				"SINGLE"
+			],
+			"video": {
+				"codecs": [
+					"H_264_42",
+					"H_264_41"
+				]
+			}
+		},
+		"Viewports": [
+			{
+				"type": "APL",
+				"id": "main",
+				"shape": "RECTANGLE",
+				"dpi": 160,
+				"presentationType": "STANDARD",
+				"canRotate": false,
+				"configuration": {
+					"current": {
+						"video": {
+							"codecs": [
+								"H_264_42",
+								"H_264_41"
+							]
+						},
+						"size": {
+							"type": "DISCRETE",
+							"pixelWidth": 1024,
+							"pixelHeight": 600
+						}
+					}
+				}
+			}
+		]
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.cd52be51-daa7-4c93-a2ce-59a1a0f9c490",
+		"timestamp": "2020-03-13T05:50:01Z",
+		"locale": "en-US",
+		"intent": {
+			"name": "GetSingleMedication",
+			"confirmationStatus": "CONFIRMED",
+			"slots": {
+				"name": {
+					"name": "name",
+					"value": "amoxil",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.9f64aeb9-c2dd-4989-8f9c-06aae7f38282.name",
+								"status": {
+									"code": "ER_SUCCESS_NO_MATCH"
+								}
+							}
+						]
+					},
+					"confirmationStatus": "CONFIRMED",
+					"source": "USER"
+				}
+			}
+		},
+		"dialogState": "COMPLETED"
+	}
+}
+
 ```
+Happy Case Test
+
 ![test5](images/test5.png)
+
+Edge Case Test
+
+![testE5](images/testE5.png)
 
 ## Test 6 : Set Reminder Intent
 ```
@@ -757,8 +890,124 @@
 		"dialogState": "STARTED"
 	}
 }
+
+//////////EDGE CASE TEST//////////
+
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.663ebb69-38cc-4d01-bc80-23eaab8f9265",
+		"application": {
+			"applicationId": "amzn1.ask.skill.9f64aeb9-c2dd-4989-8f9c-06aae7f38282"
+		},
+		"user": {
+			"userId": "amzn1.ask.account.AEYNFATTGGG5EREWD5WGYR7LNBKOGABGAFFF2JTH4VHPQ2ANJSD3JSDJZLO4DT524NXWM6E3PLHVVOY4T3XOLIE2BWSJHKZTNWP7C3UCOHSQDCB6VXWW2JBR5EE3O75OSJIE6JKVS5WYOGCROML4PFPGPT23VEWGX6GMHELTLAM5WUIBNSFMYDM63FAXGGVRJLNZS77F6XUOGUA",
+			"permissions": {
+				"scopes": {
+					"alexa::devices:all:geolocation:read": {
+						"status": "DENIED"
+					}
+				}
+			}
+		}
+	},
+	"context": {
+		"System": {
+			"application": {
+				"applicationId": "amzn1.ask.skill.9f64aeb9-c2dd-4989-8f9c-06aae7f38282"
+			},
+			"user": {
+				"userId": "amzn1.ask.account.AEYNFATTGGG5EREWD5WGYR7LNBKOGABGAFFF2JTH4VHPQ2ANJSD3JSDJZLO4DT524NXWM6E3PLHVVOY4T3XOLIE2BWSJHKZTNWP7C3UCOHSQDCB6VXWW2JBR5EE3O75OSJIE6JKVS5WYOGCROML4PFPGPT23VEWGX6GMHELTLAM5WUIBNSFMYDM63FAXGGVRJLNZS77F6XUOGUA",
+				"permissions": {
+					"scopes": {
+						"alexa::devices:all:geolocation:read": {
+							"status": "DENIED"
+						}
+					}
+				}
+			},
+			"device": {
+				"deviceId": "amzn1.ask.device.AFPXGHRWNOFKXRJD3C43RALXY6ZRTOEQ6EDK2FS7DDN5XLCEXLNBG4SI4BWGWKSBYHFCRPKYD2LUCM4DPGD3CWJ6LKCWERDAKDZZET76QP2ZYEF54UAW57QEQPARGADT3DN62J6YDGS2T4LDGWGWKO5UCULAOCJC6MHV4CHKOJJXKFMP4A4J6",
+				"supportedInterfaces": {}
+			},
+			"apiEndpoint": "https://api.amazonalexa.com",
+			"apiAccessToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjEifQ.eyJhdWQiOiJodHRwczovL2FwaS5hbWF6b25hbGV4YS5jb20iLCJpc3MiOiJBbGV4YVNraWxsS2l0Iiwic3ViIjoiYW16bjEuYXNrLnNraWxsLjlmNjRhZWI5LWMyZGQtNDk4OS04ZjljLTA2YWFlN2YzODI4MiIsImV4cCI6MTU4NDA3NTQyNSwiaWF0IjoxNTg0MDc1MTI1LCJuYmYiOjE1ODQwNzUxMjUsInByaXZhdGVDbGFpbXMiOnsibm9uTHdhU2NvcGVzIjoiYWxleGE6OnBlcnNvbl9pZDpyZWFkIiwiY29udGV4dCI6IkFBQUFBQUFBQUFCNHpXQzlKWTkvQzhqblBqc3h4ME5GS3dFQUFBQUFBQUNoWFRiQ1VsVUdQR3lmSFVoTEUzdmtxd1FEZFBVL0VxaU8wVWJiTzNzcmhiZFNxempiWnp5L0tTOUFKdVNKM1ZreVJsS1dmSGtoYnNBeUMzUFpiSTlVT3Z4S3YvVFlSZ09ud1dnSmVqMjV4MzJ0ZEFFZThtWFg1a052NzVLWlpsOCtBZFpxZzM0a2NaUzRXSE8wbzZRUzl0WU5KVEVrTS9qUVpaRjU5SWN6VWtja2pRbDF4NWdMSnNNOXdWbnRWR1pzLzRldUZtZ0pqWHVHTXcyMFpDd1VlVUdXb01ZOGU1czE3TVA3TnpJbVZTbzVvbnp5RG9EaThqMXUxbnBqYTBrRERwVkRLRWdEUFNYakdKa2hvQURqUHI2UUJRRTFKb0NqVEV3WFZSN3lUamtrOHJoa21LRTRwQ2N6OU1TTjd2emZSUmM1QXM0NWgxbWhJbGhtT2NiRlZIQ29QcW42M24wS2ZiSTBEZ0pnK0ZHekJVc0VLR2R6R0NJTUxZSGVvTFowY0Z6R2h5RjkzdzVxSHc9PSIsImNvbnNlbnRUb2tlbiI6bnVsbCwiZGV2aWNlSWQiOiJhbXpuMS5hc2suZGV2aWNlLkFGUFhHSFJXTk9GS1hSSkQzQzQzUkFMWFk2WlJUT0VRNkVESzJGUzdERE41WExDRVhMTkJHNFNJNEJXR1dLU0JZSEZDUlBLWUQyTFVDTTREUEdEM0NXSjZMS0NXRVJEQUtEWlpFVDc2UVAyWllFRjU0VUFXNTdRRVFQQVJHQURUM0RONjJKNllER1MyVDRMREdXR1dLTzVVQ1VMQU9DSkM2TUhWNENIS09KSlhLRk1QNEE0SjYiLCJ1c2VySWQiOiJhbXpuMS5hc2suYWNjb3VudC5BRVlORkFUVEdHRzVFUkVXRDVXR1lSN0xOQktPR0FCR0FGRkYySlRINFZIUFEyQU5KU0QzSlNESlpMTzREVDUyNE5YV002RTNQTEhWVk9ZNFQzWE9MSUUyQldTSkhLWlROV1A3QzNVQ09IU1FEQ0I2VlhXVzJKQlI1RUUzTzc1T1NKSUU2SktWUzVXWU9HQ1JPTUw0UEZQR1BUMjNWRVdHWDZHTUhFTFRMQU01V1VJQk5TRk1ZRE02M0ZBWEdHVlJKTE5aUzc3RjZYVU9HVUEifX0.DZOlXEuWRBdOvg5K1_ZmIhXho7IRIkaZ0mBCKI6HWS7wLPfxihSSj1ppQQfTx6LOfQ0O3wQJb5QMxDPEzcc0qedCH1jd50FsAF5PMEHLKlNxJge29BmHZ5ENrBb-zCcafqNo9oY-VQHOBwC1Y_crmocHtGaSQ4A_jH8SEMXHMQCYZ-zeZFRu6uAb3J2l64mOGHFr0nem3kdqhm_oHUo5sP1vlOHdvUFwLGLmDedr0fgW7egDYHuIjRW9pI0ZM1ogyYTgezHJPduWRLtBYGGDebdztcslmLIzK_OaqcvT3uiIHokXqETCYEMX-eW23GCsLVOxAGnyefLKX_5MAtyXAw"
+		},
+		"Viewport": {
+			"experiences": [
+				{
+					"arcMinuteWidth": 246,
+					"arcMinuteHeight": 144,
+					"canRotate": false,
+					"canResize": false
+				}
+			],
+			"shape": "RECTANGLE",
+			"pixelWidth": 1024,
+			"pixelHeight": 600,
+			"dpi": 160,
+			"currentPixelWidth": 1024,
+			"currentPixelHeight": 600,
+			"touch": [
+				"SINGLE"
+			],
+			"video": {
+				"codecs": [
+					"H_264_42",
+					"H_264_41"
+				]
+			}
+		},
+		"Viewports": [
+			{
+				"type": "APL",
+				"id": "main",
+				"shape": "RECTANGLE",
+				"dpi": 160,
+				"presentationType": "STANDARD",
+				"canRotate": false,
+				"configuration": {
+					"current": {
+						"video": {
+							"codecs": [
+								"H_264_42",
+								"H_264_41"
+							]
+						},
+						"size": {
+							"type": "DISCRETE",
+							"pixelWidth": 1024,
+							"pixelHeight": 600
+						}
+					}
+				}
+			}
+		]
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.e4864b5b-41a9-4dc9-9c04-c2d5c0dfb603",
+		"timestamp": "2020-03-13T04:52:05Z",
+		"locale": "en-US",
+		"intent": {
+			"name": "AMAZON.FallbackIntent",
+			"confirmationStatus": "NONE"
+		},
+		"dialogState": "STARTED"
+	}
+}
 ```
+Happy Case Test
+
 ![test6](images/test6.png)
+
+
+Edge Case Test
+
+![testE6](images/testE6.png)
+
+
 
 ## Test 7 : End Session Intent
 ```
