@@ -76,7 +76,7 @@ We use your information only for use of your personal Alexa skill Medicine Box; 
 
 ___
 
-## Directions to clone the repo and get the application running on your own computer
+## Directions to clone repo and get the application running on your own computer:
 
 ### What you need
 * [Amazon Developer Account](http://developer.amazon.com/alexa)
