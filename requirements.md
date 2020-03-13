@@ -50,6 +50,14 @@ The user opens Medicine Box using a phrase command to personal Alexa device. Use
 
 Due to HIPPA, the data must be secure for the user. There should not be any data leakage without the user consent. This can be done through IAM policies emplaced by AWS.
 
+Also a small privacy statement was drafted for the user.
+
+Privacy Policy:
+
+Medicine Box an Alexa skill project allows you to save prescribed medication information on your Alexa device. 
+We use your information only for use of your personal Alexa skill Medicine Box; to set medication name, dosage amount, and length of prescription. By using this Medicine Box , you agree to the collection and user of information in accordance with this policy. 
+
+
 ### Usability
 
 User should be able to traverse through the skill easily. Given the intended audience, it must be simple commands. Keeping in mind, memory issues, the skill must prompt users and list all available commands to the user. This can be implemented by when user initiates the skill, a prompt to command Alexa to "describe" will list all available commands. The commands will be simplified with addition prompts to help guide the user along.
