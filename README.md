@@ -1,8 +1,8 @@
 
 # Medicine Box
-## An Alexa Skill Project
+### An Alexa Skill Project
 
-## Bzing Team members:
+## RxIng Team members:
 [Micha Thorstenson](https://github.com/micahThor)
 
 [Crystal Lee](https://github.com/crystal-leesj)
@@ -16,6 +16,31 @@
 Create an Alexa application capable of interacting with a user's medication. Once medicines are added to a user's Alexa device, our application will create reminders for scheduled doses, have the ability to query if the user is up-to-date with their medications, and get various details about their medicines.
 
 Our application removes the burden and worry of taking regimented and scheduled medications. Our application will remind you when you should take which medicine and when. It also will provide feedback about your current medications, and whether you are on schedule for prescribed doses. This application is targeted at the elderly or anybody whose life is hectic and busy, and wish to be reminded about their medication instead of having to memorize their doses.
+
+Visit our skill repo at:  
+https://github.com/crystal-leesj/medicine-box/tree/master
+
+Invoke our skill with Alexa:
+
+"Alexa open my med box demo"
+
+
+## Technologies Used
+
+Alexa Developer Console was used to interact with Alexa. For our backend, we used Java with Maven for our dependencies. To debug we used AWS CloudWatch to log out the errors. Since Alexa skill is a cloud-based service, tobuild this custom skill, AWS Lambda was used. It runs the code only when it's needed and scales automatically, so there is no need to provision or continuously run servers. 
+   
+##### List of Technologies
+
+Alexa Skills, AWS Lambda, AWS DynamoDB, AWS CloudWatch, AWS IAM, Maven, GSON, Alexa Reminder API, JAVA, Alexa Developer Console.
+
+
+___
+
+### Skill Image As Seen In Console
+
+![screenshot-1](images/screenshot-1.png)
+
+![screenshot-2](images/screenshot-2.png)
 
 ___
 
@@ -37,6 +62,7 @@ ___
 
 
 ___
+
 ### Security
 
 #### Privacy Policy:
@@ -46,21 +72,14 @@ Medicine Box an Alexa skill project allows you to save prescribed medication inf
 We use your information only for use of your personal Alexa skill Medicine Box; to set medication name, dosage amount, and length of prescription. By using this Medicine Box , you agree to the collection and user of information in accordance with this policy. 
 
 ## Tests
+
+AWS Lambda was used for testing the Alexa skill. Happy and edge case testing were implemented by verifying user inputs and outputs to the Alexa device, as well as testing routes. 
+
 [test](testing.md)
 
 ___
-___
-## Application as it is in the console:
-![screenshot-1](images/screenshot-1.png)
 
-![screenshot-2](images/screenshot-2.png)
-A link to the deployed application
-
-
-## A list of technologies used in the application
-Alexa Skills, AWS Lambda, AWS DynamoDB, AWS CloudWatch, AWS IAM, Maven, GSON, Alexa Reminder API, JAVA, Alexa Developer Consol
-
-## Directions to clone the repo and get the application running on your own computer
+## Directions to clone repo and get the application running on your own computer:
 
 ### What you need
 * [Amazon Developer Account](http://developer.amazon.com/alexa)
@@ -77,7 +96,7 @@ Alexa Skills, AWS Lambda, AWS DynamoDB, AWS CloudWatch, AWS IAM, Maven, GSON, Al
 3. On the Permissions, enable Reminders and Location
 4. On the EndPoint, choose AWS Lambda and copy the skill id.
 
-## Set up AWS Lambda
+### Set up AWS Lambda
 1. create a new function within AWS Lambda
 2. Add Alexa Skills kit as a trigger
    1. paste the skill id from the developer console
@@ -87,5 +106,6 @@ Alexa Skills, AWS Lambda, AWS DynamoDB, AWS CloudWatch, AWS IAM, Maven, GSON, Al
 5. Copy the ARN on top and add it as the Default EndPoint in the Developer Console.
 6. Set up the lambda user permissions to all DynamoDB policies
 
-## To Run
+### To Run
 With in the Developer Console run the skill in Test, invoking the skill using `my med box demo`
+

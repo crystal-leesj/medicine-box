@@ -29,7 +29,7 @@ public class ReminderUtil {
         // time. The reminder will automatically trigger at the trigger time at the next occurrence based on the
         // recurrence pattern.
 //        ZoneId zoneId = ZoneId.of("UTC");
-        LocalDateTime triggerTime = LocalDateTime.now().minusHours(7).plusSeconds(30);
+        LocalDateTime triggerTime = LocalDateTime.now().minusHours(7).plusSeconds(20);
 //        LocalDateTime testTriggerTime = LocalDateTime.of(2020, Month.MARCH, 11,11,18);
 //
 //        Recurrence recurrence = Recurrence.builder()
