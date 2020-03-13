@@ -35,7 +35,7 @@ public class YesIntentHandler implements RequestHandler {
             String token;
             try {
                 ReminderUtil.createReminder(input, medicine);
-                token = String.format("Reminder for %s medication added, Say create reminder if you another one or say help me for all available commands ", medicine.getDrugName());
+                token = String.format("Reminder for %s medication added, Say create reminder if you want another one or say help me for all available commands ", medicine.getDrugName());
                 return input.getResponseBuilder().withSpeech(token).withShouldEndSession(false).build();
             } catch (ServiceException var9) {
                 log.error("Error creating reminder", var9);
