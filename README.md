@@ -72,6 +72,9 @@ Medicine Box an Alexa skill project allows you to save prescribed medication inf
 We use your information only for use of your personal Alexa skill Medicine Box; to set medication name, dosage amount, and length of prescription. By using this Medicine Box , you agree to the collection and user of information in accordance with this policy. 
 
 ## Tests
+
+AWS Lambda was used for testing the Alexa skill. Happy and edge case testing were implemented by verifying user inputs and outputs to the Alexa device, as well as testing routes. 
+
 [test](testing.md)
 
 ___
