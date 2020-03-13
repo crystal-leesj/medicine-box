@@ -1,6 +1,6 @@
 
 # Medicine Box
-## An Alexa Skill Project
+### An Alexa Skill Project
 
 ## RxIng Team members:
 [Micha Thorstenson](https://github.com/micahThor)
